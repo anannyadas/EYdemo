@@ -1,0 +1,125 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add new target</h4>
+            </div>
+            <div class="modal-body">
+                <form novalidate role="form" name="newCustomerForm">
+                    <div class="row" ng-class="{ 'has-error' : newCustomerForm.name.$invalid && !newCustomerForm.name.$pristine }">
+                        <div class="col-md-3"><label class="form-control">Name:</label></div>
+                        <div class="col-md-9"><input class="form-control" name="name" ng-model="newCustomer.name" required/>
+                            <p ng-show="newCustomerForm.name.$invalid && !newCustomerForm.name.$pristine" class="help-block">Name is required.</p>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-3"><label class="form-control">Info:</label></div>
+                        <div class="col-md-9"><input class="form-control"  name="info" ng-model="newCustomer.info"/></div>
+                    </div>
+                    <div class="row" ng-class="{ 'has-error' : newCustomerForm.email.$invalid && !newCustomerForm.email.$pristine }">
+                        <div class="col-md-3"><label class="form-control">E-mail:</label></div>
+                        <div class="col-md-9"><input class="form-control" name="email" ng-model="newCustomer.email" type="email"/>
+                            <p ng-show="newCustomerForm.email.$invalid && !newCustomerForm.email.$pristine" class="help-block">Enter a valid e-mail.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"><label class="form-control">Status:</label></div>
+                        <div class="col-md-9"><input class="form-control"  name="status" ng-model="newCustomer.status"/></div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-3"><label class="form-control">CB Rank:</label></div>
+                        <div class="col-md-9"><input class="form-control"  name="cbrank" ng-model="newCustomer.cbrank"/></div>
+                    </div>
+                   
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="save(newCustomerForm)" ng-disabled="newCustomerForm.$invalid" data-dismiss="modal">Add</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div>
+    <h3 class="row col-xs-12">List of Targets</h3>
+
+    <form class="row">
+        <div class="form-group col-md-6 col-xs-8">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search a target" ng-model="searchName">
+            </div>
+        </div>
+        <div class="form-group col-md-2 col-xs-4 col-md-offset-4">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-plus"></i> Add new target
+            </button>
+        </div>
+    </form>
+
+    <div class="row">
+        <table class="table table-bordered table-striped col-md-12">
+
+            <thead>
+            <tr>
+                <td>
+                    <a ng-click="sortColumn = 'name'; sortReverse = !sortReverse">
+                        Name
+                        <span ng-show="sortColumn == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortColumn == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                 <td>
+                    <a ng-click="sortColumn = 'info'; sortReverse = !sortReverse">
+                        Info
+                        <span ng-show="sortColumn == 'info' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortColumn == 'info' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="sortColumn = 'email'; sortReverse = !sortReverse">
+                        E-Mail
+                        <span ng-show="sortColumn == 'email' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortColumn == 'email' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="sortColumn = 'status'; sortReverse = !sortReverse">
+                        Status
+                        <span ng-show="sortColumn == 'status' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortColumn == 'status' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                 <td>
+                    <a ng-click="sortColumn = 'cbrank'; sortReverse = !sortReverse">
+                        CB Rank
+                        <span ng-show="sortColumn == 'cbrank' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortColumn == 'cbrank' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+               
+                <td width="2%"></td>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="customer in customers | orderBy:sortColumn:sortReverse | filter:searchName">
+                <td><a href="#/customer-detail/{{customer.id}}">{{ customer.name }}</a></td>
+                <td>{{ customer.info }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.status }}</td>
+                <td>{{ customer.cbrank }}</td>
+                <td><button class="btn btn-danger" ng-click="delete(customer.id)"><i class="fa fa-remove"></i></button></td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

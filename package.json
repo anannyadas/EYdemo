@@ -1,0 +1,42 @@
+{
+  "name": "mini-crm",
+  "version": "1.0.0",
+  "description": "An example of using pure JavaScript for web development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://renp@bitbucket.org/renp/mini-crm.git"
+  },
+  "keywords": [
+    "crm",
+    "angularjs",
+    "nodejs",
+    "express",
+    "bootstrap",
+    "demo"
+  ],
+  "author": "Rene Puchinger",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/renp/mini-crm#readme",
+  "dependencies": {
+    "body-parser": "~1.14.1",
+    "express": "~4.13.3",
+    "express-error-handler": "~1.0.1",
+    "express-favicon": "~1.0.1",
+    "express-logger": "~0.0.3",
+    "express-method-override": "~0.0.3",
+    "gulp": "~3.9.0",
+    "gulp-bower": "~0.0.10",
+    "gulp-concat": "~2.6.0",
+    "gulp-less": "~3.0.3",
+    "gulp-minify-css": "~1.2.1",
+    "gulp-notify": "~2.2.0",
+    "gulp-uglify": "~1.4.2",
+    "jwt-simple": "~0.3.1",
+    "path": "~0.12.7",
+    "underscore": "~1.8.3"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "mini-crm",
+  "version": "1.0.0",
+  "authors": [
+    "Rene Puchinger"
+  ],
+  "description": "An example of using pure JavaScript for web development",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "crm",
+    "angularjs",
+    "nodejs",
+    "express",
+    "bootstrap",
+    "demo"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "jquery": "~2.1.4",
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "angular-underscore-module": "~1.0.2",
+    "angular-animate": "~1.4.7"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.7"
+  }
+}
